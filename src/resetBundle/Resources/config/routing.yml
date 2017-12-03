@@ -1,0 +1,3 @@
+reset_homepage:
+    path:     /
+    defaults: { _controller: resetBundle:Default:index }

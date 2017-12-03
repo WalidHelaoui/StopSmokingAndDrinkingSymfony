@@ -1,0 +1,53 @@
+compte_homepage:
+    path:     /rest
+    defaults: { _controller: CompteBundle:Default:index }
+test:
+    path:     /api/user
+    defaults: { _controller: CompteBundle:Default:test }
+welcome:
+    path:     /api/welcome
+    defaults: { _controller: CompteBundle:Default:welcome }
+    methods: GET
+smokingStatistics:
+    path:     /api/smoking/all
+    defaults: { _controller: CompteBundle:Smoking:index }
+    methods: GET
+drinkingStatistics:
+    path:     /api/drinking/all
+    defaults: { _controller: CompteBundle:Drinking:index }
+    methods: GET
+drinkingSavedMoney:
+    path:     /api/drinking/savedMoney
+    defaults: { _controller: CompteBundle:Drinking:savedMoney }
+    methods: GET
+smokingSavedMoney:
+    path:     /api/smoking/savedMoney
+    defaults: { _controller: CompteBundle:Smoking:savedMoney }
+    methods: GET
+login:
+    path:     /api/login
+    defaults: { _controller: CompteBundle:Login:login}
+    methods: POST
+    
+register:
+    path:     /api/register
+    defaults: { _controller: CompteBundle:Registration:register}
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
