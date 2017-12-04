@@ -20,6 +20,12 @@ drinkingSavedMoney:
     path:     /api/drinking/savedMoney
     defaults: { _controller: CompteBundle:Drinking:savedMoney }
     methods: GET
+drinkingScore:
+    path:     /api/drinking/score
+    defaults: { _controller: CompteBundle:Drinking:changeScore }
+smokingScore:
+    path:     /api/smoking/score
+    defaults: { _controller: CompteBundle:Smoking:changeScore }
 smokingSavedMoney:
     path:     /api/smoking/savedMoney
     defaults: { _controller: CompteBundle:Smoking:savedMoney }

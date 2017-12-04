@@ -6,6 +6,7 @@ use CompteBundle\Entity\Setting;
 use CompteBundle\Entity\SmokingStatistics;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class SmokingController extends Controller
 {
@@ -34,6 +35,17 @@ class SmokingController extends Controller
             $savedMoney=$savedMoney+$diffrence;
         }
         $json->setData(['savedMoney' => $savedMoney,'count' => count($response)]);
+        return $json;
+    }
+
+    public function changeScoreAction(Request $request){
+        $smokeScore = $request->get('smokeScore');
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user->setSmokeScore($smokeScore);
+        $em->flush();
+        $json = new JsonResponse();
+        $json->setData(['SmokeScore' => $user->getSmokeScore()]);
         return $json;
     }
 }
