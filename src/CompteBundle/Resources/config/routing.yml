@@ -24,6 +24,10 @@ smokingSavedMoney:
     path:     /api/smoking/savedMoney
     defaults: { _controller: CompteBundle:Smoking:savedMoney }
     methods: GET
+setting:
+    path:     /api/setting
+    defaults: { _controller: CompteBundle:Setting:index }
+
 login:
     path:     /api/login
     defaults: { _controller: CompteBundle:Login:login}
