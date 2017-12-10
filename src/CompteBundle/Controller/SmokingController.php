@@ -48,4 +48,26 @@ class SmokingController extends Controller
         $json->setData(['SmokeScore' => $user->getSmokeScore()]);
         return $json;
     }
+
+    public function addAction(Request $request){
+        $cigaretteNumber = $request->get('cigaretteNumber');
+        $cigarettePrice = $request->get('cigarettePrice');
+        $mydate=getdate(date("U"));
+        $date = "$mydate[weekday], $mydate[mday] $mydate[month], $mydate[year]";
+        $smoking = new SmokingStatistics();
+        $smoking->setUser($this->getUser());
+        $smoking->setDate($date);
+        $smoking->setNumber($cigaretteNumber);
+        $smoking->setPrice($cigarettePrice);
+        $json = new JsonResponse();
+        $em = $this->getDoctrine()->getManager();
+        if ($cigarettePrice!=null&&$cigarettePrice!=null){
+            $em->persist($smoking);
+            $em->flush();
+
+            return $json->setData("Smoking Quiz added with success");
+        }else {
+            return $json->setData("Invalid Data");
+        }
+    }
 }

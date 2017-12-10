@@ -12,6 +12,9 @@ smokingStatistics:
     path:     /api/smoking/all
     defaults: { _controller: CompteBundle:Smoking:index }
     methods: GET
+smokingQuiz:
+    path:     /api/smoking/quiz
+    defaults: { _controller: CompteBundle:Smoking:add }
 drinkingStatistics:
     path:     /api/drinking/all
     defaults: { _controller: CompteBundle:Drinking:index }
