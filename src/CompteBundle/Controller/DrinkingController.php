@@ -49,4 +49,26 @@ class DrinkingController extends Controller
         $json->setData(['DrinkScore' => $user->getDrinkScore()]);
         return $json;
     }
+
+    public function addAction(Request $request){
+        $drinkNumber = $request->get('drinkNumber');
+        $drinkPrice = $request->get('drinkPrice');
+        $mydate=getdate(date("U"));
+        $date = "$mydate[weekday], $mydate[mday] $mydate[month], $mydate[year]";
+        $drinking = new DrinkingStatistics();
+        $drinking->setUser($this->getUser());
+        $drinking->setDate($date);
+        $drinking->setNumber($drinkNumber);
+        $drinking->setPrice($drinkPrice);
+        $json = new JsonResponse();
+        $em = $this->getDoctrine()->getManager();
+        if ($drinkPrice!=null&&$drinkNumber!=null){
+            $em->persist($drinking);
+            $em->flush();
+
+            return $json->setData("Drink Quiz added with success");
+        }else {
+            return $json->setData("Invalid Data");
+        }
+    }
 }

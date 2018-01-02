@@ -61,7 +61,7 @@ class SmokingController extends Controller
         $smoking->setPrice($cigarettePrice);
         $json = new JsonResponse();
         $em = $this->getDoctrine()->getManager();
-        if ($cigarettePrice!=null&&$cigarettePrice!=null){
+        if ($cigarettePrice!=null&&$cigaretteNumber!=null){
             $em->persist($smoking);
             $em->flush();
 
