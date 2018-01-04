@@ -70,4 +70,13 @@ class SmokingController extends Controller
             return $json->setData("Invalid Data");
         }
     }
+
+    public function restAction(){
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $var = $em->getRepository(SmokingStatistics::class)->findBy(array("number"=>0,"user"=>$user));
+        $json = new JsonResponse();
+        $json->setData(['smokingRest' => count($var)]);
+        return $json;
+    }
 }

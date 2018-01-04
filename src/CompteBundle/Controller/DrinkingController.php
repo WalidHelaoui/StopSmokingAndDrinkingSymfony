@@ -71,4 +71,13 @@ class DrinkingController extends Controller
             return $json->setData("Invalid Data");
         }
     }
+
+    public function restAction(){
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $var = $em->getRepository(DrinkingStatistics::class)->findBy(array("number"=>0,"user"=>$user));
+        $json = new JsonResponse();
+        $json->setData(['drinkingRest' => count($var)]);
+        return $json;
+    }
 }

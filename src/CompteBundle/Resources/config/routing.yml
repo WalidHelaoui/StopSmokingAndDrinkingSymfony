@@ -15,6 +15,9 @@ smokingStatistics:
 smokingQuiz:
     path:     /api/smoking/quiz
     defaults: { _controller: CompteBundle:Smoking:add }
+smokingRest:
+    path:     /api/smoking/rest
+    defaults: { _controller: CompteBundle:Smoking:rest }
 drinkingQuiz:
     path:     /api/drinking/quiz
     defaults: { _controller: CompteBundle:Drinking:add }
@@ -32,6 +35,9 @@ drinkingScore:
 smokingScore:
     path:     /api/smoking/score
     defaults: { _controller: CompteBundle:Smoking:changeScore }
+drinkingRest:
+    path:     /api/drinking/rest
+    defaults: { _controller: CompteBundle:Drinking:rest }
 smokingSavedMoney:
     path:     /api/smoking/savedMoney
     defaults: { _controller: CompteBundle:Smoking:savedMoney }
