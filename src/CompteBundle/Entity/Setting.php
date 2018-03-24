@@ -26,12 +26,12 @@ class Setting
     /**
      * @ORM\Column(type="string")
      */
-    private $smokingSettingPrice;
+    private $smokingSettingPrice=99999;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $drinkingSettingPrice;
+    private $drinkingSettingPrice=99999;
 
     /**
      * @ORM\OneToOne(targetEntity="CompteBundle\Entity\UserCompte")

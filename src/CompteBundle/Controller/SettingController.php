@@ -24,4 +24,13 @@ class SettingController extends Controller
         }
         return $json->setData(['smokingPrice' => $smokingPrice,'drinkingPrice' => $drinkingPrice]);
     }
+
+    public function getValueAction(){
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $var = $em->getRepository(Setting::class)->find($user);
+        $json = new JsonResponse();
+        $json->setData(['smoking_setting_price' => $var->getSmokingSettingPrice(),'drinking_setting_price'=>$var->getDrinkingSettingPrice()]);
+        return $json;
+    }
 }

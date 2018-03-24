@@ -45,7 +45,10 @@ smokingSavedMoney:
 setting:
     path:     /api/setting
     defaults: { _controller: CompteBundle:Setting:index }
-
+settingsValue:
+    path:     /api/setting/value
+    defaults: { _controller: CompteBundle:Setting:getValue }
+    methods: GET
 login:
     path:     /api/login
     defaults: { _controller: CompteBundle:Login:login}

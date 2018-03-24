@@ -25,17 +25,17 @@ class LoginController extends Controller
             ->getRepository('CompteBundle:UserCompte')
             ->findOneBy(['username' => $userName]);
         if (!$user) {
-            throw new BadCredentialsException();
-            //return $this->setBaseHeaders($this->serialize(['state' => 'user not found']));
+            //throw new BadCredentialsException();
+            return $this->setBaseHeaders($this->serialize(['state' => 'user not found']));
         }
 
         $isValid = $this->get('security.password_encoder')
             ->isPasswordValid($user, $password);
 
         if (!$isValid) {
-            throw new BadCredentialsException();
+            //throw new BadCredentialsException();
 
-            //return $this->setBaseHeaders($this->serialize(['state' => "password incorrect!"]));
+            return $this->setBaseHeaders($this->serialize(['state' => "password incorrect!"]));
         }
 
         $token = $this->getToken($user);

@@ -28,22 +28,22 @@ class UserCompte extends BaseUser
     /**
      * @ORM\Column(type="boolean")
      */
-    private $smoker;
+    private $smoker=0;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $drinker;
+    private $drinker=0;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $drinkScore;
+    private $drinkScore=0;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $smokeScore;
+    private $smokeScore=0;
 
     public function __construct()
     {

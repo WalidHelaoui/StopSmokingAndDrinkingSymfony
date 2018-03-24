@@ -2,6 +2,8 @@
 
 namespace CompteBundle\Controller;
 
+use CompteBundle\Entity\Setting;
+use CompteBundle\Entity\UserCompte;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,10 +49,15 @@ class RegistrationController extends BaseController
 
             $userManager->updateUser($user);
 
+
+            $setting = new Setting();
+            $setting->setUser($user);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($setting);
+            $em->flush();
             $response = new Response($this->serialize('User created.'), Response::HTTP_CREATED);
         }else {
             throw new BadRequestHttpException();
-
         }
 
         return $this->setBaseHeaders($response);
