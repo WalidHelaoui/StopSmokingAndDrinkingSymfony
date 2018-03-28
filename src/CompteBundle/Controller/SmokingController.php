@@ -14,6 +14,7 @@ class SmokingController extends Controller
     {
         $response = $this->getDoctrine()->getRepository(SmokingStatistics::class)->findBy(array("user"=>$this->getUser()));
         $i = 0;
+        $json = [];
         foreach ($response as $item){
             $i++;
             $json[$i-1]=(['number' => $item->getNumber(),'price' => $item->GetPrice(),'date' => $item->getDate()]);
